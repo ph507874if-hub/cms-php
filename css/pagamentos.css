@@ -1,0 +1,204 @@
+/* =========================================================
+   PAGAMENTOS
+   ========================================================= */
+
+.pagamentos-container {
+    width: 100%;
+    padding: 25px;
+}
+
+.pagamentos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.pagamentos-header h1 {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 0;
+}
+
+.pagamentos-header p {
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* Filtros */
+.pagamentos-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #181818;
+    border: 1px solid #292929;
+    border-radius: 10px;
+}
+
+.pagamentos-filtros input,
+.pagamentos-filtros select {
+    background: #101010;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 11px 13px;
+    border-radius: 7px;
+    outline: none;
+}
+
+.pagamentos-filtros input:focus,
+.pagamentos-filtros select:focus {
+    border-color: #00ff88;
+}
+
+/* Tabela */
+.pagamentos-tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #181818;
+    border-radius: 10px;
+    border: 1px solid #292929;
+}
+
+.pagamentos-tabela {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+.pagamentos-tabela th {
+    background: #202020;
+    color: #00ff88;
+    padding: 15px;
+    text-align: left;
+}
+
+.pagamentos-tabela td {
+    padding: 14px 15px;
+    color: #ddd;
+    border-top: 1px solid #292929;
+}
+
+.pagamentos-tabela tr:hover {
+    background: #202020;
+}
+
+/* Valores */
+.pagamento-valor {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+/* Status */
+.status-pago {
+    background: rgba(0, 255, 136, 0.12);
+    color: #00ff88;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-pendente {
+    background: rgba(255, 193, 7, 0.12);
+    color: #ffc107;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-cancelado {
+    background: rgba(220, 53, 69, 0.12);
+    color: #ff4d4d;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-processando {
+    background: rgba(0, 170, 255, 0.12);
+    color: #00aaff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Ações */
+.pagamento-acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-detalhes-pagamento {
+    background: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-detalhes-pagamento:hover {
+    background: #008dcc;
+}
+
+/* Cards de resumo */
+.pagamentos-resumo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.pagamento-card {
+    background: #181818;
+    border: 1px solid #292929;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.pagamento-card h3 {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.pagamento-card .valor {
+    color: #00ff88;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 1000px) {
+    .pagamentos-resumo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pagamentos-container {
+        padding: 15px;
+    }
+
+    .pagamentos-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .pagamentos-filtros {
+        flex-direction: column;
+    }
+
+    .pagamentos-filtros input,
+    .pagamentos-filtros select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .pagamentos-resumo {
+        grid-template-columns: 1fr;
+    }
+}
