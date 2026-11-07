@@ -2,7 +2,7 @@
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
 require_once 'produto-form-funcoes.php';
-exigirAdmin();
+exigirEditorOuAdmin();
 
 $categorias = $pdo->query('SELECT id, nome FROM categorias ORDER BY nome')->fetchAll();
 $dados = ['nome'=>'', 'descricao'=>'', 'preco'=>'', 'estoque'=>'0', 'categoria_id'=>'', 'status'=>'1'];

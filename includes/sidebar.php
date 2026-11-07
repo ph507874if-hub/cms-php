@@ -42,14 +42,14 @@ $totalUsuariosMenu = ehAdmin() ? (int) $pdo->query('SELECT COUNT(*) FROM usuario
              ============================================================= -->
         <p class="sidebar__label">Conteúdo do site</p>
         <ul class="sidebar__menu">
-          <li><a href="#" <?= linkMenu('categorias', $menuAtivo) ?>><i class="bi bi-tags"></i> Categorias <span class="badge badge-gray">exemplo</span></a></li>
-          <li><a href="#" <?= linkMenu('publicacoes', $menuAtivo) ?>><i class="bi bi-file-earmark-richtext"></i> Publicações <span class="badge badge-gray">exemplo</span></a></li>
+          <li><a href="categorias.php" <?= linkMenu('categorias', $menuAtivo) ?>><i class="bi bi-tags"></i> Categorias</a></li>
+          <li><a href="produtos.php" <?= linkMenu('produtos', $menuAtivo) ?>><i class="bi bi-box-seam"></i> Produtos</a></li>
         </ul>
 
         <p class="sidebar__label">Sistema</p>
         <ul class="sidebar__menu">
           <!-- Parte 3 do projeto: aponte para o endereço do website -->
-          <li><a href="#" class="sidebar__link" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Ver o site</a></li>
+          <li><a href="../loja.php" class="sidebar__link" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Ver o site</a></li>
           <li><a href="../logout.php" class="sidebar__link"><i class="bi bi-box-arrow-left"></i> Sair</a></li>
         </ul>
       </nav>
@@ -57,7 +57,7 @@ $totalUsuariosMenu = ehAdmin() ? (int) $pdo->query('SELECT COUNT(*) FROM usuario
       <div class="sidebar__footer">
         <div class="sidebar__help">
           <strong>Precisa de ajuda?</strong>
-          Consulte o README do projeto para ver como criar os CRUDs do seu tema.
+          Gerencie categorias, produtos, usuários e pagamentos.
         </div>
       </div>
     </aside>

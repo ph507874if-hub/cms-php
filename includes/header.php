@@ -52,7 +52,7 @@ $usaEditor = $usaEditor ?? false;
 
         <div class="topbar__actions">
           <!-- Parte 3 do projeto: aponte para o endereço do website -->
-          <a href="#" class="icon-btn" title="Ver o site" target="_blank" rel="noopener"><i class="bi bi-globe2"></i></a>
+          <a href="../loja.php" class="icon-btn" title="Ver o site" target="_blank" rel="noopener"><i class="bi bi-globe2"></i></a>
 
           <!-- Dados de quem está logado ($usuarioLogado vem do auth.php) -->
           <div class="dropdown">

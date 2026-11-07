@@ -16,11 +16,11 @@ if ($busca !== '' && ctype_digit($busca)) {
     $condicoes[] = 'pg.id = :id_busca';
     $params[':id_busca'] = (int)$busca;
 } elseif ($busca !== '') {
-    $condicoes[] = '(CAST(pg.pedido_id AS CHAR) LIKE :busca OR CAST(pg.metodo AS CHAR) LIKE :busca2)';
+    $condicoes[] = '(CAST(pg.pedido_id AS CHAR) LIKE :busca OR CAST(pg.forma_pagamento AS CHAR) LIKE :busca2)';
     $params[':busca'] = '%' . addcslashes($busca, '%_\\') . '%';
     $params[':busca2'] = '%' . addcslashes($busca, '%_\\') . '%';
 }
-if ($status !== '' && in_array($status, ['pendente','pago','aprovado','recusado','cancelado','estornado'], true)) {
+if ($status !== '' && in_array($status, ['pendente','aprovado','recusado','estornado'], true)) {
     $condicoes[] = 'pg.status = :status';
     $params[':status'] = $status;
 }
@@ -34,7 +34,7 @@ $pagina = min($pagina, $totalPaginas);
 $offset = ($pagina - 1) * $porPagina;
 
 $sql = $pdo->prepare(
-    "SELECT pg.id, pg.pedido_id, pg.valor, pg.metodo, pg.status, pg.criado_em
+    "SELECT pg.id, pg.pedido_id, pg.valor, pg.forma_pagamento, pg.status, pg.criado_em
        FROM pagamentos pg
        $where
       ORDER BY pg.criado_em DESC, pg.id DESC
@@ -61,9 +61,9 @@ require_once '../includes/header.php';
   <?php exibirMensagem(); ?>
   <section class="card">
     <form class="filters" action="pagamentos.php" method="get">
-      <div class="input-icon"><i class="bi bi-search"></i><input type="search" class="form-control" name="busca" placeholder="Buscar por ID, pedido ou método..." value="<?= e($busca) ?>"></div>
+      <div class="input-icon"><i class="bi bi-search"></i><input type="search" class="form-control" name="busca" placeholder="Buscar por ID, pedido ou forma de pagamento..." value="<?= e($busca) ?>"></div>
       <select class="form-select" name="status"><option value="">Todos os status</option>
-        <?php foreach (['pendente'=>'Pendente','pago'=>'Pago','aprovado'=>'Aprovado','recusado'=>'Recusado','cancelado'=>'Cancelado','estornado'=>'Estornado'] as $valor=>$rotulo): ?>
+        <?php foreach (['pendente'=>'Pendente','aprovado'=>'Aprovado','recusado'=>'Recusado','estornado'=>'Estornado'] as $valor=>$rotulo): ?>
           <option value="<?= e($valor) ?>" <?= $status===$valor?'selected':'' ?>><?= e($rotulo) ?></option>
         <?php endforeach; ?>
       </select>
@@ -78,7 +78,7 @@ require_once '../includes/header.php';
           <td data-label="Pagamento">#<?= (int)$pg['id'] ?></td>
           <td data-label="Pedido">#<?= (int)$pg['pedido_id'] ?></td>
           <td data-label="Valor">R$ <?= number_format((float)$pg['valor'],2,',','.') ?></td>
-          <td data-label="Método"><?= e($pg['metodo'] ?? '—') ?></td>
+          <td data-label="Método"><?= e($pg['forma_pagamento'] ?? '—') ?></td>
           <td data-label="Status"><?= e(ucfirst((string)$pg['status'])) ?></td>
           <td data-label="Data"><?= e($pg['criado_em'] ?? '—') ?></td>
           <td><a class="action-btn" href="pagamentos-detalhes.php?id=<?= (int)$pg['id'] ?>" title="Ver detalhes"><i class="bi bi-eye"></i></a></td>

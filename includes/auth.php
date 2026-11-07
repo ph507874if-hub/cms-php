@@ -56,3 +56,21 @@ function exigirAdmin(): void
         redirecionar('dashboard.php');
     }
 }
+
+function perfilUsuarioAtual(): string
+{
+    return strtolower(trim((string) ($_SESSION['usuario_perfil'] ?? '')));
+}
+
+function podeGerenciarCatalogo(): bool
+{
+    return in_array(perfilUsuarioAtual(), ['admin', 'editor'], true);
+}
+
+function exigirEditorOuAdmin(): void
+{
+    if (!podeGerenciarCatalogo()) {
+        definirMensagem('Você não tem permissão para gerenciar produtos e categorias.', 'danger');
+        redirecionar('dashboard.php');
+    }
+}

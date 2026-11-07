@@ -1,6 +1,6 @@
 <?php
 /* ==========================================================================
-   Processa o login (recebe o formulário de index.php)
+   Processa o login (recebe o formulário de admin.php)
    --------------------------------------------------------------------------
    1. Busca o usuário pelo e-mail
    2. Confere a senha com password_verify()
@@ -11,10 +11,10 @@ require_once __DIR__ . '/includes/sessao.php';
 
 // Esta página só aceita o envio do formulário (POST)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirecionar('index.php');
+    redirecionar('admin.php');
 }
 
-csrfValidar('index.php');
+csrfValidar('admin.php');
 
 $email = post('email');
 $senha = post('senha', false); // a senha não passa pelo trim(): espaços fazem parte dela
@@ -24,7 +24,7 @@ function falharLogin(string $mensagem, string $email): void
 {
     $_SESSION['login_email'] = $email;
     definirMensagem($mensagem, 'danger');
-    redirecionar('index.php');
+    redirecionar('admin.php');
 }
 
 if ($email === '' || $senha === '') {

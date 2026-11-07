@@ -1,4 +1,3 @@
-```php
 <?php
 /* ==========================================================
    Categorias — listagem, busca, filtros e paginação
@@ -7,7 +6,7 @@
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
 
-exigirAdmin();
+exigirEditorOuAdmin();
 
 $porPagina = 8;
 
@@ -209,6 +208,7 @@ require_once '../includes/header.php';
                                 <i class="bi bi-pencil"></i>
                             </a>
 
+                            <?php if (podeGerenciarCatalogo()): ?>
                             <form action="categorias-excluir.php"
                                   method="post"
                                   style="display:inline"
@@ -226,6 +226,7 @@ require_once '../includes/header.php';
                                     <i class="bi bi-trash3"></i>
                                 </button>
                             </form>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -296,4 +297,3 @@ require_once '../includes/header.php';
 </main>
 
 <?php require_once '../includes/footer.php'; ?>
-```

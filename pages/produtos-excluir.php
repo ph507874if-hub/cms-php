@@ -2,7 +2,7 @@
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
 require_once 'produto-form-funcoes.php';
-exigirAdmin();
+exigirEditorOuAdmin();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') redirecionar('produtos.php');
 csrfValidar('produtos.php');

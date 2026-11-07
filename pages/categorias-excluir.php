@@ -1,11 +1,10 @@
-```php
 <?php
 /* Exclusão de categorias */
 
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
 
-exigirAdmin();
+exigirEditorOuAdmin();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirecionar('categorias.php');
@@ -52,4 +51,3 @@ definirMensagem(
 );
 
 redirecionar('categorias.php');
-```

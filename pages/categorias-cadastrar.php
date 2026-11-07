@@ -1,11 +1,10 @@
-```php
 <?php
 /* Cadastro de categorias */
 
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
 
-exigirAdmin();
+exigirEditorOuAdmin();
 
 $dados = [
     'nome' => '',
@@ -144,4 +143,3 @@ require_once '../includes/header.php';
 </main>
 
 <?php require_once '../includes/footer.php'; ?>
-```

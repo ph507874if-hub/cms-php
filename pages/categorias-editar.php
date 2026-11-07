@@ -1,11 +1,10 @@
-```php
 <?php
 /* Edição de categorias */
 
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
 
-exigirAdmin();
+exigirEditorOuAdmin();
 
 $id = (int) get('id');
 
@@ -164,4 +163,3 @@ require_once '../includes/header.php';
 </main>
 
 <?php require_once '../includes/footer.php'; ?>
-``` 

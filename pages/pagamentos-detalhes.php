@@ -6,7 +6,7 @@ exigirAdmin();
 $id = (int)get('id');
 if ($id <= 0) { definirMensagem('Pagamento inválido.', 'danger'); redirecionar('pagamentos.php'); }
 
-$sql = $pdo->prepare('SELECT id, pedido_id, valor, metodo, status, criado_em FROM pagamentos WHERE id = ?');
+$sql = $pdo->prepare('SELECT id, pedido_id, valor, forma_pagamento, status, criado_em FROM pagamentos WHERE id = ?');
 $sql->execute([$id]);
 $pagamento = $sql->fetch();
 
@@ -24,7 +24,7 @@ require_once '../includes/header.php';
     <p><strong>ID do pagamento:</strong> #<?= (int)$pagamento['id'] ?></p>
     <p><strong>Pedido:</strong> #<?= (int)$pagamento['pedido_id'] ?></p>
     <p><strong>Valor:</strong> R$ <?= number_format((float)$pagamento['valor'],2,',','.') ?></p>
-    <p><strong>Método:</strong> <?= e($pagamento['metodo'] ?? 'Não informado') ?></p>
+    <p><strong>Método:</strong> <?= e($pagamento['forma_pagamento'] ?? 'Não informado') ?></p>
     <p><strong>Status:</strong> <?= e(ucfirst((string)$pagamento['status'])) ?></p>
     <p><strong>Data do registro:</strong> <?= e($pagamento['criado_em'] ?? 'Não informada') ?></p>
   </div></section>

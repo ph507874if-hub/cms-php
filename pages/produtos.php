@@ -2,7 +2,7 @@
 /* Produtos — listagem, busca, filtros e paginação */
 require_once '../includes/auth.php';
 require_once '../config/conexao.php';
-exigirAdmin();
+exigirEditorOuAdmin();
 
 $porPagina = 8;
 $busca = get('busca');
@@ -118,11 +118,15 @@ require_once '../includes/header.php';
             <td data-label="Status"><?= (int)$p['status'] === 1 ? 'Ativo' : 'Inativo' ?></td>
             <td class="col-actions">
               <a href="produtos-editar.php?id=<?= (int)$p['id'] ?>" class="action-btn" title="Editar"><i class="bi bi-pencil"></i></a>
-              <form action="produtos-excluir.php" method="post" style="display:inline" onsubmit="return confirm('Deseja excluir este produto?')">
-                <?= csrfCampo() ?>
-                <input type="hidden" name="id" value="<?= (int)$p['id'] ?>">
-                <button type="submit" class="action-btn action-btn--danger" title="Excluir"><i class="bi bi-trash3"></i></button>
-              </form>
+              <?php if (podeGerenciarCatalogo()): ?>
+                <form action="produtos-excluir.php" method="post" style="display:inline" onsubmit="return confirm('Deseja excluir este produto?')">
+                    <?= csrfCampo() ?>
+                    <input type="hidden" name="id" value="<?= (int)$p['id'] ?>">
+                    <button type="submit" class="action-btn action-btn--danger" title="Excluir">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </form>
+              <?php endif; ?>
             </td>
           </tr>
         <?php endforeach; ?>
